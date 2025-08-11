@@ -1,5 +1,7 @@
 package com.myproj.ecommercespringck01;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +10,9 @@ public class EcommerceSpringCk01Application {
 
     public static void main(String[] args) {
 
+        Dotenv dotenv = Dotenv.configure().load(); // Load environment variables from .env file
+
+        dotenv.entries().forEach(entry -> System.setProperty(entry.getKey(), entry.getValue())); // Set system properties from environment variables and set them
 
         SpringApplication.run(EcommerceSpringCk01Application.class, args);
     }
